@@ -21,25 +21,25 @@ public class Kasir {
     // digunakan untuk menampilkan daftar meja beserta keterangan ketersediaannya
     // gunakan method isKosong pada class Kasir agar lebih mudah
     public void tampilkanDaftarMeja() {
-        //EDIT DISINI
+        // EDIT DISINI
     }
 
     // untuk menambahkan pelanggan pada meja tertentu
     // jika meja kosong tambahkan pelanggan pada meja tersebut
     // jika tidak buatlah keterangan bahwa meja sudah ada pelanggan
     public void tambahPelanggan(int nomorMeja, Pelanggan pelanggan) {
-        //EDIT DISINI
-    }
-    
-    // menambah pesanan menu pada nomor meja
-    // jika menu tidak ada dalam daftar maka tampilkan "Menu is null" 
-    public void tambahPesanan(int nomorMeja, Menu menu) {
-        //EDIT DISINI
+        // EDIT DISINI
     }
 
-    // Menghapus pelanggan 
+    // menambah pesanan menu pada nomor meja
+    // jika menu tidak ada dalam daftar maka tampilkan "Menu is null"
+    public void tambahPesanan(int nomorMeja, Menu menu) {
+        // EDIT DISINI
+    }
+
+    // Menghapus pelanggan
     public void hapusPelanggan(int nomorMeja) {
-        //EDIT DISINI
+        // EDIT DISINI
     }
 
     public int hitungHargaPesanan(int nomorMeja) {
@@ -54,8 +54,6 @@ public class Kasir {
                 }
             }
             return totalHarga;
-        } else {
-            System.out.println("Meja " + nomorMeja + " tidak memiliki pesanan");
         }
         return totalHarga;
     }
@@ -67,13 +65,14 @@ public class Kasir {
         if (pelanggan != null && menu != null && menu.length > 0) {
             for (int i = 0; i < menu.length; i++) {
                 if (menu[i] != null) {
-                    System.out.println("Meja " + nomorMeja + " - " + pelanggan.getNama() + " memesan " + menu[i].getNama() + " seharga " + menu[i].getHarga());
+                    System.out.println("Meja " + nomorMeja + " - " + pelanggan.getNama() + " memesan "
+                            + menu[i].getNama() + " seharga " + menu[i].getHarga());
                 }
             }
         } else {
             System.out.println("Meja " + nomorMeja + " tidak memiliki pesanan");
         }
-    }    
+    }
 
     public void tampilkanDaftarMenu() {
         System.out.println("Daftar Menu:");
@@ -103,76 +102,81 @@ public class Kasir {
             tampilkanDaftarFitur();
             System.out.print("Masukkan pilihan: ");
             pilihan = scanner.nextInt();
-            scanner.nextLine();  
+            scanner.nextLine();
             switch (pilihan) {
                 case 1:
                     // menampilkan daftar meja dengan method yang sudah ada
-                    //EDIT DISINI
+                    // EDIT DISINI
                 case 2:
-                    // tampilkan pesan untuk input nomor meja dan nama pelanggan untuk digunakan pada method
+                    // tampilkan pesan untuk input nomor meja dan nama pelanggan untuk digunakan
+                    // pada method
                     // jangan lupa instansiasi Pelanggan dengan nama pelanggan sesuai input
                     // EDIT DISINI
                 case 3:
-                boolean stopLoop = false;
-                System.out.print("Masukkan nomor meja: ");
-                int nomorMejaPesan = scanner.nextInt();
-                scanner.nextLine();  
-                if (mejaKosong(nomorMejaPesan)) {
-                    continue;
-                }
-                tampilkanDaftarMenu();
-                while (!stopLoop) {
-                    System.out.print("Masukkan nomor menu: ");
-                    int nomorMenuPesan = scanner.nextInt();
-                    scanner.nextLine();  
-                    switch (nomorMenuPesan) {
-                        case 1:
-                            tambahPesanan(nomorMejaPesan, daftarMenu[0]);
-                            break;
-                        case 2:
-                            tambahPesanan(nomorMejaPesan, daftarMenu[1]);
-                            break;
-                        case 3:
-                            tambahPesanan(nomorMejaPesan, daftarMenu[2]);
-                            break;
-                        case 4:
-                            tambahPesanan(nomorMejaPesan, daftarMenu[3]);
-                            break;
-                        case 5:
-                            tambahPesanan(nomorMejaPesan, daftarMenu[4]);
-                            break;
-                        case 6:
-                            stopLoop = true;
-                            break;
-                        default:
-                            System.out.println("Nomor menu tidak valid");
-                            break;
+                    boolean stopLoop = false;
+                    System.out.print("Masukkan nomor meja: ");
+                    int nomorMejaPesan = scanner.nextInt();
+                    Boolean meja = daftarMeja[nomorMejaPesan - 1].isKosong();
+                    scanner.nextLine();
+                    if (!meja) {
+                        tampilkanDaftarMenu();
+                        while (!stopLoop) {
+                            System.out.print("Masukkan nomor menu: ");
+                            int nomorMenuPesan = scanner.nextInt();
+                            scanner.nextLine();
+                            switch (nomorMenuPesan) {
+                                case 1:
+                                    tambahPesanan(nomorMejaPesan, daftarMenu[0]);
+                                    break;
+                                case 2:
+                                    tambahPesanan(nomorMejaPesan, daftarMenu[1]);
+                                    break;
+                                case 3:
+                                    tambahPesanan(nomorMejaPesan, daftarMenu[2]);
+                                    break;
+                                case 4:
+                                    tambahPesanan(nomorMejaPesan, daftarMenu[3]);
+                                    break;
+                                case 5:
+                                    tambahPesanan(nomorMejaPesan, daftarMenu[4]);
+                                    break;
+                                case 6:
+                                    stopLoop = true;
+                                    break;
+                                default:
+                                    System.out.println("Nomor menu tidak valid");
+                                    break;
+                            }
+                        }
+                    } else {
+                        System.out.println("Meja tidak ada pelanggan");
                     }
-                }
-                break;
+                    break;
                 case 4:
                     // untuk menghapus pelanggan pada meja tertentu
-                    // tampilkan pesan untuk memasukkan nomor meja yang akan dihapus untuk digunakan pada method hapusPelanggan()
+                    // tampilkan pesan untuk memasukkan nomor meja yang akan dihapus untuk digunakan
+                    // pada method hapusPelanggan()
                     // EDIT DISINI
                 case 5:
                     // Untuk melihat total harga pesanan pada meja tertentu
-                    // tampilkan pesan untuk memasukkan nomor meja 
-                    // jangan lupa membedakan keluaran apabila pelanggan belum memesan apapun / total harga 0
+                    // tampilkan pesan untuk memasukkan nomor meja
+                    // jangan lupa membedakan keluaran apabila pelanggan belum memesan apapun /
+                    // total harga 0
                     // EDIT DISINI
                 case 6:
                     // untuk melihat pesanan pada meja tertentu
-                    // tampilkan pesan untuk memasukkan nomor meja 
+                    // tampilkan pesan untuk memasukkan nomor meja
                     // EDIT DISINI
 
                 case 0:
-                    // untuk menampilkan pesan apabila admin keluar
-                    
+                    System.out.println("Terima kasih telah menggunakan aplikasi kasir restoran!");
+                    break;
                 default:
-                System.out.println("Pilihan tidak valid");
-                break;
+                    System.out.println("Pilihan tidak valid");
+                    break;
+            }
+            System.out.println();
         }
-        System.out.println();
-    }
-    scanner.close();
+        scanner.close();
     }
 }

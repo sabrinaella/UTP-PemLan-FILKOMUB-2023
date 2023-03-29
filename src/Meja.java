@@ -41,9 +41,9 @@ public class Meja {
             System.out.println("Maaf, tidak dapat menambahkan pesanan lagi. Sudah mencapai batas maksimum 10 pesanan.");
         }
     }
-    
+
     // untuk mengecek apakah meja kosong
     public boolean isKosong() {
-        //EDIT DISINI
+        // EDIT DISINI
     }
 }
