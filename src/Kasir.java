@@ -22,6 +22,13 @@ public class Kasir {
     // gunakan method isKosong pada class Kasir agar lebih mudah
     public void tampilkanDaftarMeja() {
         // EDIT DISINI
+        for (int i = 0; i < 10; i++) {
+            if (daftarMeja[i].isKosong()) {
+                System.out.println("Meja " + (i + 1) + " (Kosong)");
+            } else{
+                System.out.println("Meja " + (i + 1) + " terisi oleh pelanggan " + daftarMeja[i].getPelanggan().getNama());
+            }
+        }
     }
 
     // untuk menambahkan pelanggan pada meja tertentu
@@ -29,17 +36,37 @@ public class Kasir {
     // jika tidak buatlah keterangan bahwa meja sudah ada pelanggan
     public void tambahPelanggan(int nomorMeja, Pelanggan pelanggan) {
         // EDIT DISINI
+        daftarMeja[]
+        if (daftarMeja[nomorMeja - 1].isKosong()) {
+            daftarMeja[nomorMeja - 1].setPelanggan(pelanggan);
+            System.out.println("Pelanggan " + pelanggan.getNama() + " berhasil ditambahkan ke Meja " + nomorMeja);
+        } else {
+            System.out.println("Maaf, Meja " + nomorMeja + " sudah terisi oleh pelanggan " + daftarMeja[nomorMeja - 1].getPelanggan().getNama());
+        }
     }
 
     // menambah pesanan menu pada nomor meja
     // jika menu tidak ada dalam daftar maka tampilkan "Menu is null"
     public void tambahPesanan(int nomorMeja, Menu menu) {
         // EDIT DISINI
+        daftarMeja[nomorMeja-1].tambahMenu(menu);
+            System.out.println("Harga pesanan di meja " + meja.getNomorMeja + " adalah " + menu.getHarga());
+        }
     }
 
     // Menghapus pelanggan
     public void hapusPelanggan(int nomorMeja) {
         // EDIT DISINI
+        if (daftarMeja[nomorMeja-1].isKosong()) {
+            System.out.println("Meja sudah terisi");
+        } else {
+        daftarMeja[nomorMeja - 1].tambahPengunjung();
+        }
+    }
+        
+        public class Meja {
+        private int kapasitas;
+        private int jumlahPengunjung;
     }
 
     public int hitungHargaPesanan(int nomorMeja) {

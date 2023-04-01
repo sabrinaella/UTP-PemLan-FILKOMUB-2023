@@ -45,5 +45,20 @@ public class Meja {
     // untuk mengecek apakah meja kosong
     public boolean isKosong() {
         // EDIT DISINI
+        boolean kosong = true;
+        if (this.pelanggan !=null){
+            kosong = false;
+        }
+        else{
+            for (int i = 0; i < this.alat.length; i++) {
+                if (this.alat[i] != null) {
+                    kosong = false;
+                    break;
+                }
+            }
+        }
+        return kosong;
     }
+
+    public boolean is
 }
